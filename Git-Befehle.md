@@ -2,20 +2,20 @@
 
 ## Inhaltsverzeichnis
 
-1. Repository erstellen und kopieren
-2. Änderungen verwalten
-3. Commits
-4. Branches
-5. Navigation
-6. Merge und Rebase
-7. Commit-Historie
-8. Commits bearbeiten
-9. Tags
-10. Remote Repositories
-11. Synchronisation mit Remote Repositories
-12. Änderungen rückgängig machen
-13. Relative Referenzen
-14. Typischer Git-Workflow
+1. [Repository erstellen und kopieren](#1-repository-erstellen-und-kopieren)
+2. [Änderungen verwalten](#2-%C3%A4nderungen-verwalten)
+3. [Commits](#3-commits)
+4. [Branches](#4-branches)
+5. [Navigation](#5-navigation)
+6. [Merge und Rebase](#6-merge-und-rebase)
+7. [Commit-Historie](#7-commit-historie)
+8. [Commits bearbeiten](#8-commits-bearbeiten)
+9. [Tags](#9-tags)
+10. [Remote Repositories](#10-remote-repositories)
+11. [Synchronisation mit Remote Repositories](#11-synchronisation-mit-remote-repositories)
+12. [Änderungen rückgängig machen](#12-%C3%A4nderungen-r%C3%BCckg%C3%A4ngig-machen)
+13. [Relative Referenzen](#13-relative-referenzen)
+14. [Typischer Git-Workflow](#14-typischer-git-workflow)
 
 ---
 
