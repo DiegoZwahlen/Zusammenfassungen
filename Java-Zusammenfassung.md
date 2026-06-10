@@ -10,7 +10,7 @@
    - [do-while-Schleife](#33-do-while-schleife)
 4. [Arrays](#4-arrays)
 5. [Methoden (Funktionen)](#5-methoden-funktionen)
-6. [Objektorientierte Programmierung](#einf%C3%BChrung-in-die-objektorientierte-programmierung-oop)
+6. [Objektorientierte Programmierung](https://github.com/DiegoZwahlen/Zusammenfassungen/edit/main/Java-Zusammenfassung.md#6-einf%C3%BChrung-in-die-objektorientierte-programmierung-oop)
 
 ---
 
