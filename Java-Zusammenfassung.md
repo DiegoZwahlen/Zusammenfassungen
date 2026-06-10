@@ -10,6 +10,7 @@
    - [do-while-Schleife](#33-do-while-schleife)
 4. [Arrays](#4-arrays)
 5. [Methoden (Funktionen)](#5-methoden-funktionen)
+6. [Objektorientierte Programmierung](#einf%C3%BChrung-in-die-objektorientierte-programmierung-oop)
 
 ---
 
@@ -508,3 +509,435 @@ public class Main {
 ```text
 12
 ```
+
+## 6. Einführung in die Objektorientierte Programmierung (OOP)
+
+### Inhaltsverzeichnis
+
+1. [Klasse vs. Objekt](#1-klasse-vs-objekt)
+2. [Klassen erstellen](#2-klassen-erstellen)
+3. [Attribute](#3-attribute)
+4. [Konstruktoren](#4-konstruktoren)
+5. [Das Schlüsselwort `this`](#5-das-schl%C3%BCsselwort-this)
+6. [Objekte erzeugen](#6-objekte-erzeugen)
+7. [Beispielklasse](#7-komplettes-beispiel)
+8. [Zusammenfassung](#8-zusammenfassung)
+
+---
+
+## 1. Klasse vs. Objekt
+
+### Klasse
+
+Eine Klasse ist ein Bauplan für Objekte.
+
+Sie beschreibt:
+
+- Welche Eigenschaften (Attribute) ein Objekt besitzt.
+- Welche Fähigkeiten (Methoden) ein Objekt besitzt.
+
+#### Beispiel
+
+Klasse:
+
+```java
+class Auto {
+    String marke;
+    int baujahr;
+}
+```
+
+Die Klasse beschreibt lediglich, wie ein Auto aussehen soll.
+
+---
+
+### Objekt
+
+Ein Objekt ist eine konkrete Instanz einer Klasse.
+
+#### Beispiel
+
+```java
+Auto auto1 = new Auto();
+```
+
+`auto1` ist ein Objekt der Klasse `Auto`.
+
+---
+
+### Klasse vs. Objekt
+
+| Klasse | Objekt |
+|----------|----------|
+| Bauplan | Konkretes Exemplar |
+| Beschreibt Eigenschaften | Besitzt tatsächliche Werte |
+| `Auto` | `auto1` |
+| `Student` | `max` |
+
+Beispiel:
+
+```java
+Auto auto1 = new Auto();
+Auto auto2 = new Auto();
+```
+
+Hier existieren zwei verschiedene Objekte derselben Klasse.
+
+---
+
+## 2. Klassen erstellen
+
+### Aufbau einer Klasse
+
+```java
+class Klassenname {
+
+    // Attribute
+
+    // Konstruktor
+
+    // Methoden
+}
+```
+
+#### Beispiel
+
+```java
+class Student {
+
+    String name;
+    int alter;
+
+}
+```
+
+---
+
+## 3. Attribute
+
+Attribute beschreiben die Eigenschaften eines Objekts.
+
+#### Beispiel
+
+```java
+class Student {
+
+    String name;
+    int alter;
+    double note;
+
+}
+```
+
+Jedes Objekt besitzt seine eigenen Werte.
+
+---
+
+### Zugriff auf Attribute
+
+```java
+Student s = new Student();
+
+s.name = "Max";
+s.alter = 20;
+
+System.out.println(s.name);
+```
+
+Ausgabe:
+
+```
+Max
+```
+
+---
+
+## 4. Konstruktoren
+
+Ein Konstruktor wird automatisch aufgerufen, wenn ein Objekt erzeugt wird.
+
+Er dient dazu, Attribute zu initialisieren.
+
+---
+
+### Konstruktor ohne Parameter
+
+```java
+class Student {
+
+    String name;
+
+    public Student() {
+        name = "Unbekannt";
+    }
+}
+```
+
+Objekt erzeugen:
+
+```java
+Student s = new Student();
+```
+
+---
+
+### Konstruktor mit Parametern
+
+```java
+class Student {
+
+    String name;
+    int alter;
+
+    public Student(String n, int a) {
+        name = n;
+        alter = a;
+    }
+}
+```
+
+Objekt erzeugen:
+
+```java
+Student s = new Student("Max", 20);
+```
+
+---
+
+## 5. Das Schlüsselwort this
+
+`this` verweist auf das aktuelle Objekt.
+
+---
+
+### Problem ohne this
+
+```java
+class Student {
+
+    String name;
+
+    public Student(String name) {
+        name = name;
+    }
+}
+```
+
+Hier wird der Parameter sich selbst zugewiesen.
+
+Das Attribut bleibt leer.
+
+---
+
+### Lösung mit this
+
+```java
+class Student {
+
+    String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+}
+```
+
+Bedeutung:
+
+```java
+this.name
+```
+
+= Attribut des Objekts
+
+```java
+name
+```
+
+= Parameter des Konstruktors
+
+---
+
+### Mehrere Attribute
+
+```java
+class Student {
+
+    String name;
+    int alter;
+
+    public Student(String name, int alter) {
+
+        this.name = name;
+        this.alter = alter;
+    }
+}
+```
+
+---
+
+## 6. Objekte erzeugen
+
+### Allgemeine Syntax
+
+```java
+Klassenname objektname = new Klassenname(...);
+```
+
+#### Beispiel
+
+```java
+Student max = new Student("Max", 20);
+```
+
+---
+
+### Auf Attribute zugreifen
+
+```java
+System.out.println(max.name);
+System.out.println(max.alter);
+```
+
+Ausgabe:
+
+```
+Max
+20
+```
+
+---
+
+## 7. Komplettes Beispiel
+
+```java
+public class Student {
+
+    String name;
+    int alter;
+
+    public Student(String name, int alter) {
+
+        this.name = name;
+        this.alter = alter;
+    }
+}
+```
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student max = new Student("Max", 20);
+
+        System.out.println(max.name);
+        System.out.println(max.alter);
+    }
+}
+```
+
+Ausgabe:
+
+```
+Max
+20
+```
+
+---
+
+## Beispiel mit zwei Objekten
+
+```java
+public class Student {
+
+    String name;
+    int alter;
+
+    public Student(String name, int alter) {
+
+        this.name = name;
+        this.alter = alter;
+    }
+}
+```
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student max = new Student("Max", 20);
+        Student anna = new Student("Anna", 22);
+
+        System.out.println(max.name);
+        System.out.println(anna.name);
+    }
+}
+```
+
+Ausgabe:
+
+```
+Max
+Anna
+```
+
+Jedes Objekt besitzt eigene Attributwerte.
+
+---
+
+## 8. Zusammenfassung
+
+### Klasse
+
+- Bauplan für Objekte
+- Enthält Attribute und Methoden
+
+### Objekt
+
+- Konkrete Instanz einer Klasse
+- Wird mit `new` erzeugt
+
+### Attribute
+
+- Speichern Eigenschaften eines Objekts
+
+Beispiel:
+
+```java
+String name;
+int alter;
+```
+
+### Konstruktor
+
+- Hat denselben Namen wie die Klasse
+- Besitzt keinen Rückgabetyp
+- Wird beim Erzeugen eines Objekts automatisch aufgerufen
+
+Beispiel:
+
+```java
+public Student(String name) {
+    this.name = name;
+}
+```
+
+### this
+
+- Verweist auf das aktuelle Objekt
+- Wird häufig zur Unterscheidung von Attributen und Parametern verwendet
+
+Beispiel:
+
+```java
+this.name = name;
+```
+
+### Objekterzeugung
+
+```java
+Student max = new Student("Max", 20);
+```
+
