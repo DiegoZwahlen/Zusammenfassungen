@@ -302,20 +302,3 @@ git push
 ```
 
 Diese Befehlsfolge wird in der Praxis am häufigsten verwendet.
-
----
-
-# Merksätze für die Prüfung
-
-- `git add` → Änderungen vormerken
-- `git commit` → Snapshot erstellen
-- `git push` → Änderungen hochladen
-- `git pull` → Änderungen herunterladen
-- `git branch` → Branch erstellen
-- `git checkout` → Branch wechseln
-- `git merge` → Branches zusammenführen
-- `git rebase` → Historie linear machen
-- `git reset` → Branch zurücksetzen
-- `git revert` → Änderungen rückgängig machen
-- `git fetch` → Nur herunterladen, nichts zusammenführen
-- `git clone` → Repository kopieren
