@@ -11,6 +11,7 @@
 4. [Arrays](#4-arrays)
 5. [Methoden (Funktionen)](#5-methoden-funktionen)
 6. [Objektorientierte Programmierung](#6-einf%C3%BChrung-in-die-objektorientierte-programmierung-oop)
+7. [Kapselung](#7-kapselung-gettersetter-und-die-tostring-methode)
 
 ---
 
@@ -941,3 +942,315 @@ this.name = name;
 Student max = new Student("Max", 20);
 ```
 
+## 7. Kapselung, Getter/Setter und die `toString()`-Methode
+
+### 7.1 Kapselung (Encapsulation)
+
+Kapselung ist ein grundlegendes Prinzip der objektorientierten Programmierung (OOP). Dabei werden die Daten (Attribute) eines Objekts vor direktem Zugriff von außen geschützt.
+
+Das Ziel ist, dass Änderungen an den Daten nur über festgelegte Methoden erfolgen können.
+
+### Der `private`-Zugriffsmodifikator
+
+Mit dem Schlüsselwort `private` können Attribute so deklariert werden, dass sie nur innerhalb derselben Klasse zugänglich sind.
+
+```java
+public class Person {
+    private String name;
+    private int alter;
+}
+```
+
+Ein direkter Zugriff von außen ist dann nicht mehr möglich:
+
+```java
+Person p = new Person();
+
+// Fehler:
+p.name = "Max";
+```
+
+### Vorteile der Kapselung
+
+- Schutz der Daten vor unerlaubten Änderungen
+- Kontrolle über den Zugriff auf Attribute
+- Vermeidung von fehlerhaften Werten
+- Bessere Wartbarkeit und Erweiterbarkeit des Codes
+
+### Beispiel
+
+Ohne Kapselung:
+
+```java
+public class Person {
+    public int alter;
+}
+```
+
+```java
+Person p = new Person();
+p.alter = -10; // Ungültiger Wert möglich
+```
+
+Mit Kapselung:
+
+```java
+public class Person {
+    private int alter;
+}
+```
+
+Nun kann der Zugriff kontrolliert werden.
+
+---
+
+### 7.2 Getter und Setter
+
+Da auf `private` Attribute nicht direkt zugegriffen werden kann, werden sogenannte Getter und Setter verwendet.
+
+#### Getter
+
+Getter lesen den Wert eines Attributs aus.
+
+```java
+public int getAlter() {
+    return alter;
+}
+```
+
+Verwendung:
+
+```java
+int aktuellesAlter = person.getAlter();
+```
+
+#### Setter
+
+Setter verändern den Wert eines Attributs.
+
+```java
+public void setAlter(int neuesAlter) {
+    alter = neuesAlter;
+}
+```
+
+Verwendung:
+
+```java
+person.setAlter(20);
+```
+
+### Vollständiges Beispiel
+
+```java
+public class Person {
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String neuerName) {
+        name = neuerName;
+    }
+}
+```
+
+Verwendung:
+
+```java
+Person p = new Person();
+
+p.setName("Max");
+
+System.out.println(p.getName());
+```
+
+Ausgabe:
+
+```text
+Max
+```
+
+### Datenvalidierung mit Settern
+
+Ein großer Vorteil von Settern ist die Möglichkeit, Eingaben zu überprüfen.
+
+```java
+public void setAlter(int neuesAlter) {
+    if (neuesAlter >= 0) {
+        alter = neuesAlter;
+    }
+}
+```
+
+Dadurch werden ungültige Werte verhindert:
+
+```java
+person.setAlter(-5); // Wird nicht übernommen
+```
+
+### Das Schlüsselwort `this`
+
+Oft haben Parameter und Attribute denselben Namen.
+
+```java
+private String name;
+
+public void setName(String name) {
+    this.name = name;
+}
+```
+
+`this.name` bezeichnet das Attribut des aktuellen Objekts.
+
+`name` bezeichnet den übergebenen Parameter.
+
+---
+
+### 7.3 Die `toString()`-Methode
+
+Jedes Objekt in Java besitzt eine Methode namens `toString()`. Sie wird von der Klasse `Object` geerbt.
+
+Die Methode liefert eine Textdarstellung eines Objekts zurück.
+
+### Standardverhalten
+
+Ohne eigene Implementierung:
+
+```java
+Person p = new Person();
+
+System.out.println(p);
+```
+
+Ausgabe:
+
+```text
+Person@4e25154f
+```
+
+Diese Ausgabe ist meist wenig hilfreich.
+
+### Eigene `toString()`-Methode erstellen
+
+Die Methode kann überschrieben werden, um sinnvolle Informationen auszugeben.
+
+```java
+public class Person {
+
+    private String name;
+    private int alter;
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Alter: " + alter;
+    }
+}
+```
+
+### Verwendung
+
+```java
+Person p = new Person();
+
+p.setName("Max");
+p.setAlter(20);
+
+System.out.println(p);
+```
+
+Ausgabe:
+
+```text
+Name: Max, Alter: 20
+```
+
+### Die Annotation `@Override`
+
+```java
+@Override
+public String toString() {
+    return "Beispiel";
+}
+```
+
+`@Override` zeigt an, dass eine geerbte Methode überschrieben wird.
+
+Vorteile:
+
+- Schreibfehler werden erkannt
+- Der Compiler überprüft die Methode
+- Der Code wird leichter verständlich
+
+### Komplettes Beispiel
+
+```java
+public class Person {
+
+    private String name;
+    private int alter;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAlter() {
+        return alter;
+    }
+
+    public void setAlter(int alter) {
+        if (alter >= 0) {
+            this.alter = alter;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', alter=" + alter + "}";
+    }
+}
+```
+
+Verwendung:
+
+```java
+Person p = new Person();
+
+p.setName("Max");
+p.setAlter(20);
+
+System.out.println(p);
+```
+
+Ausgabe:
+
+```text
+Person{name='Max', alter=20}
+```
+
+---
+
+### Zusammenfassung
+
+| Konzept | Beschreibung |
+|----------|-------------|
+| `private` | Verhindert direkten Zugriff auf Attribute von außen |
+| Getter | Liest den Wert eines Attributs aus |
+| Setter | Verändert den Wert eines Attributs |
+| `this` | Verweist auf das aktuelle Objekt |
+| `toString()` | Liefert eine Textdarstellung eines Objekts |
+| `@Override` | Kennzeichnet das Überschreiben einer geerbten Methode |
+
+### Merksatz
+
+> Attribute sollten in der Regel `private` sein.
+>
+> Auf sie wird über Getter und Setter zugegriffen.
+>
+> Die `toString()`-Methode dient dazu, Objekte lesbar als Text darzustellen.
